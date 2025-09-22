@@ -1,0 +1,40 @@
+\documentclass[dvipdfmx,autodetect-engine]{jsarticle}% autodetect-engine で pLaTeX / upLaTeX を自動判定
+\usepackage[T1]{fontenc} % < > が ¿ ¡ になるのを防ぐために追加
+\usepackage[margin=16truemm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\pagestyle{fancy}
+\lhead{}\chead{Written and arranged by Yu Ito, MD.}\rhead{}
+\usepackage{ascmac,amsmath, amssymb, amsfonts, bm, latexsym}
+\def\qed{\hspace{1zw}$\blacksquare$}
+\def\qedi{\hspace{1zw}\blacksquare}
+\def\証明{\noindent\textbf{【証明】}}
+\def\var{\mathrm{Var}}
+\def\cov{\mathrm{Cov}}
+\def\R{\mathbf{R}}
+\def\C{\mathbf{C}}
+\def\iid{\,i.i.d.\sim}
+\def\rank{\mathrm{rank\,}}
+\def\Im{\mathrm{Im\,}}
+\def\Ker{\mathrm{Ker\,}}
+\def\exp{\mathrm{exp}}
+\def\dim{\mathrm{dim}}
+\def\仮説検定#1#2{\mathrm{H_0}: #1\ \  \mathrm{vs}\ \  \mathrm{H_1}: #2}
+\def\スペース{\par\vspace{0.5zw}}
+\def\tr{\mathrm{tr\,}}
+\def\T{\mathsf{T}}
+\newcommand{\insfig}[2]{%
+  \begin{center}
+    \includegraphics[width=0.8\linewidth]{fig/#1}
+    \vspace{-1.5zw}
+    \begin{flushright}
+      {\small （#2 より引用）}
+    \end{flushright}
+  \end{center}
+}
+
+\begin{document}
+
+\include{doc/resp.tex}
+
+\end{document}
