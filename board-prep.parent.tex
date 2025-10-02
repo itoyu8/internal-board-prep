@@ -3,6 +3,7 @@
 \usepackage[margin=16truemm]{geometry}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
+\usepackage{ifthen}
 \pagestyle{fancy}
 \lhead{}\chead{Written and arranged by Yu Ito, MD.}\rhead{}
 \usepackage{ascmac,amsmath, amssymb, amsfonts, bm, latexsym}
@@ -23,16 +24,51 @@
 \def\スペース{\par\vspace{0.5zw}}
 \def\tr{\mathrm{tr\,}}
 \def\T{\mathsf{T}}
-\newcommand{\insfig}[2]{%
+\newcommand{\insfig}[3]{%
   \begin{center}
-    \includegraphics[width=0.8\linewidth]{fig/#1}
-    \vspace{-1.5zw}
-    \begin{flushright}
-      {\small （#2 より引用）}
-    \end{flushright}
+    \ifthenelse{\equal{#2}{}}{%
+     \includegraphics[width=0.8\linewidth]{fig/#1}
+    }{
+    \includegraphics[width=#2\linewidth]{fig/#1}
+    }
+    \ifthenelse{\equal{#3}{}}{%
+    }{
+        \vspace{-1.5zw}
+      \begin{flushright}
+        {\small （#3 より引用）}
+      \end{flushright}
+    }
   \end{center}
 }
 
+\newcommand{\insdualfig}[5]{%
+  \begin{center} 
+    \begin{minipage}[t]{0.48\linewidth}
+      \centering
+      \ifthenelse{\equal{#2}{}}{%
+        \includegraphics[width=0.9\linewidth]{fig/#1}
+      }{%
+        \includegraphics[width=#2\linewidth]{fig/#1}
+      }
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\linewidth}
+      \centering
+      \ifthenelse{\equal{#4}{}}{%
+        \includegraphics[width=0.9\linewidth]{fig/#3}
+      }{%
+        \includegraphics[width=#4\linewidth]{fig/#3}
+      }
+    \end{minipage}
+    \ifthenelse{\equal{#5}{}}{%
+    }{%
+      \vspace{-2zw}
+      \begin{flushright}
+        {\small （#5 より引用）}
+      \end{flushright}
+    }
+  \end{center}
+}
 \begin{document}
 
 \include{doc/resp.tex}
